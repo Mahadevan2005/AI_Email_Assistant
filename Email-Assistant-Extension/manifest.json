@@ -1,0 +1,32 @@
+{
+  "name": "MailPilot",
+  "description": "AI assistant that writes, replies, and simplifies your email workflow.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "http://localhost:8080/*",
+    "*://mail.google.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["*://mail.google.com/*"],
+      "css": ["content.css"], 
+      "run_at": "document_end"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [ "Extension-Image.png" ],
+      "matches": [ "*://mail.google.com/*" ]
+    }
+  ],
+
+  "action": {
+    "default_title": "MailPilot",
+    "default_icon": "Extension-Image.png"
+  }
+}
