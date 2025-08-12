@@ -11,6 +11,7 @@
 	<groupId>com.email</groupId>
 	<artifactId>Email-Assistant</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Email-Assistant</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
