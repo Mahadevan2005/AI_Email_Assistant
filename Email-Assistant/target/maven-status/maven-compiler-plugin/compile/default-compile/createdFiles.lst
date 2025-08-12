@@ -1,0 +1,4 @@
+com\email\Email_Assistant\app\EmailRequest.class
+com\email\Email_Assistant\app\EmailGeneratorService.class
+com\email\Email_Assistant\app\EmailGeneratorController.class
+com\email\Email_Assistant\EmailAssistantApplication.class
