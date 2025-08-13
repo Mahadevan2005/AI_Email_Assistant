@@ -11,7 +11,7 @@
 - [Architecture & Flow](#architecture--flow)  
 - [Project Structure](#project-structure)  
 - [Installation & Setup](#installation--setup)  
-- [Usage](#usage)  
+- [Live in action](#live-in-action)  
 - [Sample Screenshots](#sample-screenshots)  
 
 ---
@@ -105,8 +105,8 @@ http://localhost:5173
 
 ---
 
-## Sample Screenshots
-
+## Live in Action
+![Video](https://drive.google.com/file/d/1ca6-bRpfpQjxIedjWZec6mUDAj2MrF6k/view?usp=sharing)
 
 <h3 align="center">
 Thank You ❤️
