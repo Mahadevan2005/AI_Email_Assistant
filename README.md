@@ -1,7 +1,6 @@
 # MailPilot 
 
-**MailPilot** is a **smart email assistant** that works as both a **web app** and a **Chrome extension**, powered by **Spring Boot** and **Google Gemini API**.  
-It helps you draft, summarize, rewrite, and organize emails directly from your browser or a dedicated web dashboard.
+**MailPilot** is a **smart email assistant** that works as both a **web app** and a **Chrome extension**, powered by **Spring Boot** and **Google Gemini API**. It helps you draft, summarize, rewrite, and organize emails directly from your browser or a dedicated web dashboard.
 
 
 ---
@@ -23,23 +22,6 @@ MailPilot helps users compose professional emails effortlessly. With just a sing
 
 ---
 
-## Architecture & Flow
-
-1. **Utility-Client (Python)**  
-   - Runs on each monitored machine (Windows/macOS/Linux).  
-   - Collects system details (disk encryption, OS updates, antivirus status, sleep timeout).  
-   - Detects changes and sends reports to backend API every 30 minutes.  
-
-2. **Backend-Server (FastAPI + SQLite)**  
-   - Accepts authenticated reports via REST API.  
-   - Stores reports in SQLite database with timestamps.  
-   - Provides endpoints to list machines and filter by OS and health status.
-
-3. **Admin-Dashboard (React + MUI)**  
-   - Fetches machine data from backend API.  
-   - Displays machines in a sortable, paginated table.  
-   - Filters machines by OS type and issue status (e.g., unencrypted disk, outdated OS).  
-   - Highlights machines with potential issues for easy identification.
 ## Architecture & Flow
 
 1. **E-mail-Assistant-Extension**  
@@ -93,7 +75,7 @@ chmod +x mvnw  # On Mac/Linux, make Maven wrapper executable
 ./mvnw clean package -DskipTests
 java -jar target/*.jar
 
-#### By default backend will run at
+# By default backend will run at
 http://localhost:8080
 ```
 
@@ -102,8 +84,8 @@ http://localhost:8080
 cd Email-Assistant-React
 npm install
 npm run dev
-```
-#### By default frontend will run at
+
+# By default frontend will run at
 http://localhost:5173
 ```
 
