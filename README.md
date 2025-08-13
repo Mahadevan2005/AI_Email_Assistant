@@ -40,6 +40,21 @@ MailPilot helps users compose professional emails effortlessly. With just a sing
    - Displays machines in a sortable, paginated table.  
    - Filters machines by OS type and issue status (e.g., unencrypted disk, outdated OS).  
    - Highlights machines with potential issues for easy identification.
+## Architecture & Flow
+
+1. **E-mail-Assistant-Extension**  
+   - Integrates directly with Gmail service in the browser.  
+   - Captures email content and sends it to the backend for processing.  
+   - Generates reply directly in the email composer.
+
+2. **Email-Assistant (Spring Boot + Gemini API)**  
+   - Exposes REST API endpoints for email drafting, summarization, and rewriting.  
+   - Handles communication with the Gemini API.  
+   - Manages request validation, security, and rate-limiting.
+
+3. **Email-Assistant-React**  
+   - Allows users to access MailPilot from any browser without installing the extension.  
+   - Provides customization for tone and generate replies.
 
 ---
 
@@ -47,19 +62,19 @@ MailPilot helps users compose professional emails effortlessly. With just a sing
 
 ```
 /
-├── utility-client/
-│ └── sysutil.py # Python client utility for data collection and reporting
-| └── requirements.txt
-├── backend-server/
-│ ├── main.py # FastAPI backend server
-│ └── sysutil.db # SQLite database
-  └── requirements.txt
-├── admin-dashboard/
+├── Email-Assistant/
+│ ├── src/main/java/... # Spring Boot API code
+│ ├── pom.xml # Maven dependencies
+│ └── mvnw # Maven wrapper
+├── Email-Assistant-React/
 │ ├── src/
-│ │ └── App.jsx # React admin dashboard component
-│ ├── package.json # React project metadata & dependencies
-│ └── ... # Other React files
-├── README.md # Project documentation 
+│ │ └── App.jsx # React main component
+│ ├── package.json
+│ └── ...
+├── Email-Assistant-Extension/
+│ ├── manifest.json # Chrome extension configuration
+│ ├── content.js # Injected scripts for Gmail
+├── README.md
 ```
 ---
 
@@ -67,56 +82,48 @@ MailPilot helps users compose professional emails effortlessly. With just a sing
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Mahadevan2005/Cross_Platform_System_Utility_Checker.git
+git clone git clone https://github.com/Mahadevan2005/AI_Email_Assistant.git
 ```
 
-### 2. Create & activate virtual environment
-- #### Create Virtual Environment
+### 2. Backend Setup (Spring Boot)
+
 ```bash
-python -m venv venv
+cd Email-Assistant
+chmod +x mvnw  # On Mac/Linux, make Maven wrapper executable
+./mvnw clean package -DskipTests
+java -jar target/*.jar
+
+#### By default backend will run at
+http://localhost:8080
 ```
-- ### Activate virtual environment
-For Linux/macOS:
-```
-source venv/bin/activate
-```
-For Windows:
-```
-venv\\Scripts\\activate
-```
-### 3. Install required backend package dependencies
+
+### 3. Frontend Setup (React)
 ```bash
-pip install -r requirements.txt
-```
-### 4. In terminal move into the directory "/backend-server" and start the server
-```bash
-cd backend-server
-uvicorn main:app --reload --port 8000
-```
-### 5. In terminal move into the directory "utility-client" and start the process
-```bash
-cd utility-client
-python sysutil.py
-```
-### 6. In terminal move into the directory "admin-dashboard" and start the frontend server
-```bash
-cd admin-dashboard
+cd Email-Assistant-React
 npm install
 npm run dev
 ```
+#### By default frontend will run at
+http://localhost:5173
+```
+
+### 4. Chrome Extension Setup
+- Go to chrome://extensions/ in Chrome.
+- Enable Developer Mode (top right). 
+- Click Load unpacked and select the /Email-Assistant-Extension folder.
+- The extension should now appear in your Chrome toolbar.
 ---
 
 ## Usage
 
-- The backend server receives and stores system reports securely using an API key.
-- The client utility runs continuously on each endpoint machine.
-- The frontend dashboard provides real-time insight with filtering options by OS and system health issues.
-- Machines with issues (unencrypted disk, outdated OS, missing antivirus, or high inactivity timeout) are highlighted for easy identification.
+### Via Web App
+- Open the frontend in your browser, type your prompt, and instantly get AI-powered email drafts.
+### Via Chrome Extension
+- Open Gmail, start composing a reply the "AI Reply" button appears, just click and get your reply content.
 
 ---
 
 ## Sample Screenshots
-![Admin Dashboard](https://github.com/user-attachments/assets/ae1bb7a3-ac53-4579-9e6b-da8abed5bbf1)
 
 
 <h3 align="center">
