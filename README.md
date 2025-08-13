@@ -106,7 +106,7 @@ http://localhost:5173
 ---
 
 ## Live in Action
-### Watch the dem0 here
+### Watch the demo here
 - https://drive.google.com/file/d/1ca6-bRpfpQjxIedjWZec6mUDAj2MrF6k/view?usp=sharing
 
 ---
